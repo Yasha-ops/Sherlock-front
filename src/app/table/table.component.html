@@ -1,0 +1,32 @@
+<div>
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="rank">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rank </th>
+            <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="login">
+            <th mat-header-cell *matHeaderCellDef> Login </th>
+            <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="wpm">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Wpm </th>
+            <td mat-cell *matCellDef="let element"> {{element.wpm}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="class">
+            <th mat-header-cell *matHeaderCellDef> Class </th>
+            <td mat-cell *matCellDef="let element"> {{element.class}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+
+</div>

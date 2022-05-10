@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Press+Start+2P&display=swap');
+h1
+{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+}
+
+.leader-title
+{
+    padding-top: 10%; 
+}
+
+
+@import '../node_modules/bulma/bulma';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
