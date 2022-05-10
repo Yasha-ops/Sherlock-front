@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
@@ -25,8 +26,71 @@ export class TableComponent implements OnInit {
   @ViewChild(MatSort, { static: true })
   sort!: MatSort;
 
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
   constructor() { 
     this.posts = [
+      {
+        rank: 2,
+        login: "yassine.damiri",
+        wpm: 100,
+        class: 'A3'
+      },
+
+      {
+        rank: 1,
+        login: "param.dave",
+        wpm: 120,
+        class: 'A3'
+      },
+
+      {
+        rank: 3,
+        login: "raphael.duhen",
+        wpm: 73,
+        class: 'A3'
+      },
+      {
+        rank: 2,
+        login: "yassine.damiri",
+        wpm: 100,
+        class: 'A3'
+      },
+
+      {
+        rank: 1,
+        login: "param.dave",
+        wpm: 120,
+        class: 'A3'
+      },
+
+      {
+        rank: 3,
+        login: "raphael.duhen",
+        wpm: 73,
+        class: 'A3'
+      },
+      {
+        rank: 2,
+        login: "yassine.damiri",
+        wpm: 100,
+        class: 'A3'
+      },
+
+      {
+        rank: 1,
+        login: "param.dave",
+        wpm: 120,
+        class: 'A3'
+      },
+
+      {
+        rank: 3,
+        login: "raphael.duhen",
+        wpm: 73,
+        class: 'A3'
+      },
       {
         rank: 2,
         login: "yassine.damiri",
@@ -60,4 +124,7 @@ export class TableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 }
