@@ -13,7 +13,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MatSortModule,
     MatTableModule,

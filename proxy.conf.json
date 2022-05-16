@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://b6a3-2a01-e0a-4d5-2fb0-848-51cb-b4ce-8264.eu.ngrok.io",
+    "secure": false
+  }
+}

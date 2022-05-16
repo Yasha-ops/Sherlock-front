@@ -2,26 +2,33 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { TableService } from './table.service';
+import { HttpClient } from '@angular/common/http';
+
 
 interface Student
 {
-    rank: number;
-    login : string;
+    username : string;
     wpm : number;
-    class : string;
 }
 
+
+interface Entries
+{
+    entries : Student[];
+}
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  providers: [TableService]
 })
 export class TableComponent implements OnInit {
 
   dataSource: MatTableDataSource<Student>;
-  posts: Student[];
-  columns: string[] = ['rank', 'login', 'wpm', 'class'];
+  posts: Student[]= [];
+  columns: string[] = ['wpm', 'username'];
   
   @ViewChild(MatSort, { static: true })
   sort!: MatSort;
@@ -29,93 +36,30 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  constructor() { 
-    this.posts = [
-      {
-        rank: 2,
-        login: "yassine.damiri",
-        wpm: 100,
-        class: 'A3'
-      },
+  private ROOT_URL : string = "https://b6a3-2a01-e0a-4d5-2fb0-848-51cb-b4ce-8264.eu.ngrok.io";
 
-      {
-        rank: 1,
-        login: "param.dave",
-        wpm: 120,
-        class: 'A3'
-      },
-
-      {
-        rank: 3,
-        login: "raphael.duhen",
-        wpm: 73,
-        class: 'A3'
-      },
-      {
-        rank: 2,
-        login: "yassine.damiri",
-        wpm: 100,
-        class: 'A3'
-      },
-
-      {
-        rank: 1,
-        login: "param.dave",
-        wpm: 120,
-        class: 'A3'
-      },
-
-      {
-        rank: 3,
-        login: "raphael.duhen",
-        wpm: 73,
-        class: 'A3'
-      },
-      {
-        rank: 2,
-        login: "yassine.damiri",
-        wpm: 100,
-        class: 'A3'
-      },
-
-      {
-        rank: 1,
-        login: "param.dave",
-        wpm: 120,
-        class: 'A3'
-      },
-
-      {
-        rank: 3,
-        login: "raphael.duhen",
-        wpm: 73,
-        class: 'A3'
-      },
-      {
-        rank: 2,
-        login: "yassine.damiri",
-        wpm: 100,
-        class: 'A3'
-      },
-
-      {
-        rank: 1,
-        login: "param.dave",
-        wpm: 120,
-        class: 'A3'
-      },
-
-      {
-        rank: 3,
-        login: "raphael.duhen",
-        wpm: 73,
-        class: 'A3'
-      }
-    ];
+  constructor(private http: HttpClient) { 
     this.dataSource = new MatTableDataSource(this.posts);
   }
 
   ngOnInit(): void {
+    console.log("Init !");
+
+    var result : Entries =  JSON.parse('{}');
+
+    this.http.get(this.ROOT_URL + '/sorted', { responseType: 'text' })
+    .subscribe(res   => {
+      result = JSON.parse(res);
+      console.log(result.entries)
+      result.entries.forEach(student=> {
+        console.log("Student " + student.username)
+        this.posts.push(student);
+      });
+
+      this.dataSource = new MatTableDataSource(this.posts);
+    })
+
+
     this.dataSource.sort = this.sort;
   }
 

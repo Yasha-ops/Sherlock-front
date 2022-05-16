@@ -25,13 +25,10 @@ export class AppComponent { //implements OnInit{
       .type('Sup Masterclass ?')
       .rest(1000)
       .remove(17)
-      .type('LearderBoard')
-      .rest(2000)
-      .remove(12)
-      .type('Eh bah alors ...')
+      .type('Sherlock is watching you ...')
       .rest(1000)
-      .remove(16)
-      .type('LearderBoard')
+      .remove(28)
+      .type('Faster !!!!')
       .start()
   }
 }

@@ -7,7 +7,36 @@ table{
     width: 100%;
 }
 
-.mat-cell
+.mat-header-cell {
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-column-wpm
 {
-    /* TODO Change font */
+
+    text-align: center;
+    justify-content:center;
+}
+
+
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
+
+.mat-sort-header-container
+{
+  text-align: center;
+  justify-content:center;
+}
+.mat-focus-indicator 
+{
+  text-align: center;
+  justify-content:center;
+}
+.ng-tns-c24-1
+{
+  text-align: center;
+  justify-content:center;
 }
